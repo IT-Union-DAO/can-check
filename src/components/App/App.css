@@ -1,0 +1,11 @@
+.App {
+  text-align: center;
+  min-width: 30rem;
+  background: linear-gradient(180deg, rgb(61, 19, 68) 0%, rgb(84, 70, 88) 100%);
+  min-height: 30rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
