@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "extension/popup/index.html"
+  },
+  "permissions": [
+    "activeTab",
+    "contextMenus",
+    "scripting",
+    "background",
+    "webRequest",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "extension/background/background.ts"
+  },
+  "host_permissions": [
+    "*://*/*"
+  ]
+}
