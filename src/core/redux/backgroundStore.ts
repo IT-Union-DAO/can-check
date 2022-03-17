@@ -1,12 +1,10 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
-import countReducer from "./slices/NumberCountSlice";
-import detectedCanisterReducer from "./slices/DetectedCanistersSlice";
+import detectedCanisterReducer from "./slices/CanistersForTabsSlice";
 import dabInfoReducer from "./slices/DabInfoSlice";
 import coverInfoReducer from "./slices/CoverInfoSlice";
 import {getEnvType} from "@/core/env";
 
 const rootReducer = combineReducers({
-  countReducer,
   detectedCanisterReducer,
   dabInfoReducer,
   coverInfoReducer

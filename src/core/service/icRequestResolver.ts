@@ -1,8 +1,12 @@
 import {WebRequest} from "webextension-polyfill/namespaces/webRequest";
 
-const canisterRequestRegex = RegExp("(/api/v2/canister/)\\S{27}/(query|call)");
+const canisterRequestRegex = RegExp("(/api/v2/canister/)\\S{27}/(query|call|metrics)");
 const canisterPrincipalPattern = RegExp("(.{5}-){4}.{3}");
 
+/**
+ * Returns set of canister ids if any were spotted in HTTP headers
+ * @param details
+ */
 export const extractCanisterIdsFromSendHeaderDetails = (
     details: WebRequest.OnSendHeadersDetailsType
 ): Set<string> => {

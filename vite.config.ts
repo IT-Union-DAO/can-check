@@ -1,13 +1,13 @@
 import {defineConfig} from "vite";
 import react from "@vitejs/plugin-react";
-import {emptyDir} from "rollup-plugin-empty-dir";
 import {chromeExtension} from "rollup-plugin-chrome-extension";
 import nodePolyfills from "rollup-plugin-polyfill-node";
 import resolve from "@rollup/plugin-node-resolve";
 import zip from "rollup-plugin-zip"
-
 import commonjs from "@rollup/plugin-commonjs";
 import inject from "@rollup/plugin-inject";
+import {emptyDir} from "rollup-plugin-empty-dir";
+import {copy} from '@web/rollup-plugin-copy';
 
 const path = require("path");
 
@@ -20,13 +20,16 @@ export default defineConfig(({mode}) => {
     root: absPathTo("src"),
     build: {
       rollupOptions: {
-        input: [absPathTo("src/manifest.json")],
+        input: [
+          absPathTo("src/manifest.json"),
+          absPathTo("src/extension/popup/verification.html")
+        ],
         output: {
           dir: "dist",
           format: "esm",
           chunkFileNames: path.join("chunks", "[name]-[hash].js"),
         },
-      },
+      }
     },
     resolve: {
       alias: {
@@ -37,6 +40,12 @@ export default defineConfig(({mode}) => {
     },
     plugins: [
       emptyDir(),
+      copy({
+        patterns: ['**/*.png'],
+        //exclude files in manifest.json
+        exclude: ["extension/assets/icon/blue*.png"],
+        rootDir: absPathTo("src")
+      }),
       inject({
         modules: {Buffer: ["buffer", "Buffer"]},
       }),

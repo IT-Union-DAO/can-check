@@ -1,5 +1,6 @@
 import {WebRequest} from "webextension-polyfill/namespaces/webRequest";
 import {extractCanisterIdsFromSendHeaderDetails} from "@/core/service/icRequestResolver";
+import {cleanUrl} from "@/core/service/utils";
 
 
 describe("Background network interception", () => {
@@ -64,6 +65,18 @@ describe("Background network interception", () => {
     })
 
     expect(onlyUrl.has("h2bch-3yaaa-aaaab-qaama-cai")).toBeTruthy()
+  })
+
+
+  test("Should clean url", () => {
+    const testUrl = "https://h5aet-waaaa-aaaab-qaamq-cai.raw.ic0.app/"
+    const testUrl2 = "https://h5aet-waaaa-aaaab-qaamq-cai.raw.ic0.app/sdfsdf232"
+    const testUrl3 = "https://h5aet-waaaa-aaaab-qaamq-cai.raw.ic0.app"
+    const expectedResult = "https://h5aet-waaaa-aaaab-qaamq-cai.raw.ic0.app"
+
+    expect(cleanUrl(testUrl)).toEqual(expectedResult)
+    expect(cleanUrl(testUrl2)).toEqual(expectedResult)
+    expect(cleanUrl(testUrl3)).toEqual(expectedResult)
   })
 })
 

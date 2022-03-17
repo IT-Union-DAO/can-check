@@ -1,4 +1,4 @@
-export const idlFactory = ({IDL}) => {
+export const coverIdlFactory = ({IDL}) => {
   const Config = IDL.Record({
     'admin': IDL.Opt(IDL.Vec(IDL.Principal)),
     'validator': IDL.Opt(IDL.Vec(IDL.Principal)),

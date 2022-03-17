@@ -1,8 +1,23 @@
-### CanCheck (Canister check)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Browser extension which allows verify canister ids of application against DAB and Cover service to
-show information about canisters
+### CanCheck (Canister Check extension)
 
-[![extension-screenshot](./description/description.png)  ]
+![demo-screenshot](./description/demo.png)
 
-description WIP
+**CanCheck** is a browser extension used to verify Internet Computer Smart Contracts metadata (
+Canisters)
+for safer user experience during Internet Computer DApps usage
+
+![extension-screenshot](./description/description.png)
+
+To get more details about extension architecture please
+visit <a href='https://github.com/DunkanMcLoud/can-check/wiki'>CanCheck Wiki</a>
+
+### Running and building application locally
+
+To install dependencies run in app folder: `npm install`
+
+1. For local development:
+   `npm run dev`
+2. For running jest tests: `npm run test`
+3. To build a zip-package: `npm run build` (Build will appear in `release` folder)
